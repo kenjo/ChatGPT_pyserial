@@ -1,0 +1,222 @@
+<!DOCTYPE html><html><head>  <meta charset="utf-8"/>  <title>Chat GPT: Finding Available Serial Ports.</title>  <meta name="generator" content="chatGPT Saving Bookmark"/><style>body {  background-color: rgb(32,33,35);  color: rgb(236,236,241);  font-size: 16px;  font-family: sans-serif;  line-height: 28px;  margin: 0;}body > .w-full {  padding: 30px;}/* prompt */body > .w-full:nth-child(2n+1) {  background: rgb(52,53,65);}/* response */body > .w-full:nth-child(2n+2) {  background: rgb(68,70,84);}a, a:visited {  color: #7792cd;}pre {  margin: 0 0 1em 0;  display: inline-block;  width: 100%;}pre code.hljs {  margin-bottom: 1em;  border-radius: 5px;}.whitespace-pre-wrap {  white-space: pre-wrap;}.flex-col {  max-width: 850px;  margin: 0px auto;}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/default.min.css"/></head><body><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 dark:bg-gray-800"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap">how to find out names of devices that can be used in pyserial serial.Serial() function. that works for booth winfows and linux </div></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 bg-gray-50 dark:bg-[#444654]"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap"><div class="markdown prose w-full break-words dark:prose-invert light"><p>In order to find out the names of devices that can be used in <code>pyserial</code>'s <code>serial.Serial()</code> function that works for both Windows and Linux, you can use the following steps:</p><ol><li>First, import the <code>serial</code> module from the <code>pyserial</code> library:</li></ol><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">import</span> serial
+</code></div></div></pre><ol start="2"><li>Then, use the <code>serial.tools.list_ports.comports()</code> function to get a list of available serial ports on your system. This function returns a list of <code>serial.tools.list_ports.ListPortInfo</code> objects, which contain information about each available port:</li></ol><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python">available_ports = serial.tools.list_ports.comports()
+</code></div></div></pre><ol start="3"><li>Finally, you can iterate through the list of available ports and print out the name of each port:</li></ol><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">for</span> port <span class="hljs-keyword">in</span> available_ports:
+    <span class="hljs-built_in">print</span>(port.name)
+</code></div></div></pre><p>This code will print out the names of all available serial ports on your system, which can be used as arguments to the <code>serial.Serial()</code> function. Note that the names of the ports will be different depending on your operating system and the devices connected to your system.</p></div></div></div><div class="flex justify-between"></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 dark:bg-gray-800"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap">write a python gui program that works on both linux and windows that opens a windows listing the available serial ports and allows the user to select one then open a new window reading from that port and displaying it in the new window</div></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 bg-gray-50 dark:bg-[#444654]"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap"><div class="markdown prose w-full break-words dark:prose-invert light"><p>Sure! Here's an example Python GUI program using the <code>tkinter</code> library that works on both Linux and Windows, which lists the available serial ports, allows the user to select one, and then opens a new window to read from that port and display the data:</p><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">import</span> serial.tools.list_ports
+<span class="hljs-keyword">import</span> tkinter <span class="hljs-keyword">as</span> tk
+<span class="hljs-keyword">import</span> tkinter.scrolledtext <span class="hljs-keyword">as</span> tkst
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SerialReaderGUI</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, master</span>):
+        self.master = master
+        self.master.title(<span class="hljs-string">"Serial Reader"</span>)
+        self.available_ports = self.list_available_ports()
+        self.selected_port = tk.StringVar()
+        self.create_widgets()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">list_available_ports</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> [port.name <span class="hljs-keyword">for</span> port <span class="hljs-keyword">in</span> serial.tools.list_ports.comports()]
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_widgets</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-comment"># Create a dropdown list of available serial ports</span>
+        tk.Label(self.master, text=<span class="hljs-string">"Select a serial port:"</span>).grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">0</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+        port_dropdown = tk.OptionMenu(self.master, self.selected_port, *self.available_ports)
+        port_dropdown.grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">1</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+
+        <span class="hljs-comment"># Create a button to open the selected serial port</span>
+        tk.Button(self.master, text=<span class="hljs-string">"Open Port"</span>, command=self.open_serial_port).grid(row=<span class="hljs-number">1</span>, column=<span class="hljs-number">0</span>, columnspan=<span class="hljs-number">2</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open_serial_port</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-comment"># Open a new window to display the data from the selected serial port</span>
+        serial_window = tk.Toplevel(self.master)
+        serial_window.title(<span class="hljs-string">"Serial Data"</span>)
+        serial_window.geometry(<span class="hljs-string">"400x400"</span>)
+        tkst.ScrolledText(serial_window).pack(expand=<span class="hljs-literal">True</span>, fill=<span class="hljs-string">"both"</span>)
+
+        <span class="hljs-comment"># Read from the selected serial port and display the data in the new window</span>
+        <span class="hljs-keyword">with</span> serial.Serial(self.selected_port.get(), <span class="hljs-number">9600</span>) <span class="hljs-keyword">as</span> ser:
+            <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+                line = ser.readline().decode(<span class="hljs-string">'utf-8'</span>)
+                serial_window.children[<span class="hljs-string">'!scrolledtext'</span>].insert(tk.END, line)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    root = tk.Tk()
+    app = SerialReaderGUI(root)
+    root.mainloop()
+</code></div></div></pre><p>This program creates a GUI with a dropdown list of available serial ports and a button to open the selected port. When the button is clicked, a new window is opened to display the data from the selected serial port. The program reads data from the selected serial port using the <code>serial</code> library and displays it in the new window using the <code>tkinter.scrolledtext</code> widget.</p><p>Note that this program assumes that the serial port is transmitting data in UTF-8 encoding at a baud rate of 9600. You may need to modify the program to match the specifics of your own use case.</p></div></div></div><div class="flex justify-between"></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 dark:bg-gray-800"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap">what is the way to install pyserial on ubuntu </div></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 bg-gray-50 dark:bg-[#444654]"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap"><div class="markdown prose w-full break-words dark:prose-invert light"><p>To install <code>pyserial</code> on Ubuntu, you can use the following steps:</p><ol><li><p>Open a terminal window on your Ubuntu system.</p></li><li><p>Install <code>pip</code>, the package installer for Python, if it is not already installed. You can do this by running the following command:</p><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>csharp</span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-csharp">sudo apt-<span class="hljs-keyword">get</span> install python3-pip
+</code></div></div></pre><p>This command installs <code>pip</code> for Python 3, which is the version of Python that is installed by default on Ubuntu 20.04 and later.</p></li><li><p>Install <code>pyserial</code> using <code>pip</code> by running the following command:</p><pre><div class="bg-black rounded-md mb-4"><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs">pip3 install pyserial
+</code></div></div></pre><p>This command installs the latest version of <code>pyserial</code> available on the Python Package Index (PyPI) for Python 3.</p></li><li><p>After the installation is complete, you can verify that <code>pyserial</code> is installed correctly by importing it in a Python script or in a Python interpreter:</p><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">import</span> serial
+</code></div></div></pre><p>If no errors are raised, <code>pyserial</code> is installed correctly.</p></li></ol><p>That's it! Now you should be able to use <code>pyserial</code> in your Python scripts or programs on your Ubuntu system.</p></div></div></div><div class="flex justify-between"></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 dark:bg-gray-800"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap">make it possible to have two serial port windows at the same time </div></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 bg-gray-50 dark:bg-[#444654]"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap"><div class="markdown prose w-full break-words dark:prose-invert light"><p>To make it possible to have two serial port windows open at the same time, you can modify the <code>SerialReaderGUI</code> class in the previous code example to create a new instance of the <code>SerialWindow</code> class for each selected serial port.</p><p>Here's an example implementation:</p><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">import</span> serial.tools.list_ports
+<span class="hljs-keyword">import</span> tkinter <span class="hljs-keyword">as</span> tk
+<span class="hljs-keyword">import</span> tkinter.scrolledtext <span class="hljs-keyword">as</span> tkst
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SerialWindow</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, port</span>):
+        self.port = port
+        self.window = tk.Toplevel()
+        self.window.title(<span class="hljs-string">f"Serial Port: <span class="hljs-subst">{self.port}</span>"</span>)
+        self.text_area = tkst.ScrolledText(self.window)
+        self.text_area.pack(expand=<span class="hljs-literal">True</span>, fill=<span class="hljs-string">"both"</span>)
+        self.open_serial_port()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open_serial_port</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">with</span> serial.Serial(self.port, <span class="hljs-number">9600</span>) <span class="hljs-keyword">as</span> ser:
+            <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+                line = ser.readline().decode(<span class="hljs-string">'utf-8'</span>)
+                self.text_area.insert(tk.END, line)
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SerialReaderGUI</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, master</span>):
+        self.master = master
+        self.master.title(<span class="hljs-string">"Serial Reader"</span>)
+        self.available_ports = self.list_available_ports()
+        self.selected_ports = []
+        self.create_widgets()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">list_available_ports</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> [port.name <span class="hljs-keyword">for</span> port <span class="hljs-keyword">in</span> serial.tools.list_ports.comports()]
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_widgets</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-comment"># Create a dropdown list of available serial ports</span>
+        tk.Label(self.master, text=<span class="hljs-string">"Select a serial port:"</span>).grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">0</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+        self.port_dropdown = tk.OptionMenu(self.master, tk.StringVar(), *self.available_ports)
+        self.port_dropdown.grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">1</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+
+        <span class="hljs-comment"># Create a button to add the selected serial port</span>
+        tk.Button(self.master, text=<span class="hljs-string">"Add Port"</span>, command=self.add_serial_port).grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">2</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">add_serial_port</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-comment"># Add a new serial window for the selected port</span>
+        port = self.port_dropdown.cget(<span class="hljs-string">"text"</span>)
+        <span class="hljs-keyword">if</span> port <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> self.selected_ports:
+            self.selected_ports.append(port)
+            SerialWindow(port)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    root = tk.Tk()
+    app = SerialReaderGUI(root)
+    root.mainloop()
+</code></div></div></pre><p>In this modified implementation, the <code>SerialReaderGUI</code> class maintains a list of selected serial ports and creates a new instance of the <code>SerialWindow</code> class for each selected port when the "Add Port" button is clicked. The <code>SerialWindow</code> class creates a new window to display the data from the selected serial port and reads data from the port using the <code>serial</code> library.</p><p>Note that this implementation assumes that the serial port is transmitting data in UTF-8 encoding at a baud rate of 9600. You may need to modify the implementation to match the specifics of your own use case.</p></div></div></div><div class="flex justify-between"></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 dark:bg-gray-800"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap">there is an error when using the port its the device that needs to be use dnot the name. the name is needed for the selection but device is needed to open it</div></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 bg-gray-50 dark:bg-[#444654]"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap"><div class="markdown prose w-full break-words dark:prose-invert light"><p>Thank you for letting me know. You are correct that the <code>SerialWindow</code> class should use the device identifier, rather than the name, to open the serial port.</p><p>Here's a modified implementation that uses the device identifier instead of the name:</p><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">import</span> serial.tools.list_ports
+<span class="hljs-keyword">import</span> tkinter <span class="hljs-keyword">as</span> tk
+<span class="hljs-keyword">import</span> tkinter.scrolledtext <span class="hljs-keyword">as</span> tkst
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SerialWindow</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, device</span>):
+        self.device = device
+        self.window = tk.Toplevel()
+        self.window.title(<span class="hljs-string">f"Serial Port: <span class="hljs-subst">{self.device}</span>"</span>)
+        self.text_area = tkst.ScrolledText(self.window)
+        self.text_area.pack(expand=<span class="hljs-literal">True</span>, fill=<span class="hljs-string">"both"</span>)
+        self.open_serial_port()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open_serial_port</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">with</span> serial.Serial(self.device, <span class="hljs-number">9600</span>) <span class="hljs-keyword">as</span> ser:
+            <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+                line = ser.readline().decode(<span class="hljs-string">'utf-8'</span>)
+                self.text_area.insert(tk.END, line)
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SerialReaderGUI</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, master</span>):
+        self.master = master
+        self.master.title(<span class="hljs-string">"Serial Reader"</span>)
+        self.available_ports = self.list_available_ports()
+        self.selected_devices = []
+        self.create_widgets()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">list_available_ports</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> [port.device <span class="hljs-keyword">for</span> port <span class="hljs-keyword">in</span> serial.tools.list_ports.comports()]
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_widgets</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-comment"># Create a dropdown list of available serial ports</span>
+        tk.Label(self.master, text=<span class="hljs-string">"Select a serial port:"</span>).grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">0</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+        self.port_dropdown = tk.OptionMenu(self.master, tk.StringVar(), *self.available_ports)
+        self.port_dropdown.grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">1</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+
+        <span class="hljs-comment"># Create a button to add the selected serial port</span>
+        tk.Button(self.master, text=<span class="hljs-string">"Add Port"</span>, command=self.add_serial_port).grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">2</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">add_serial_port</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-comment"># Add a new serial window for the selected port</span>
+        device = self.port_dropdown.cget(<span class="hljs-string">"text"</span>)
+        <span class="hljs-keyword">if</span> device <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> self.selected_devices:
+            self.selected_devices.append(device)
+            SerialWindow(device)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    root = tk.Tk()
+    app = SerialReaderGUI(root)
+    root.mainloop()
+</code></div></div></pre><p>In this modified implementation, the <code>SerialWindow</code> class uses the <code>device</code> attribute instead of the <code>port</code> attribute to open the serial port. The <code>SerialReaderGUI</code> class also uses the <code>device</code> attribute to create the list of available ports and to retrieve the selected port when the "Add Port" button is clicked.</p></div></div></div><div class="flex justify-between"></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 dark:bg-gray-800"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap">we need to read one line at a time as a read from serial port will never finish unless its removed. also I need it in 115200 speed</div></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 bg-gray-50 dark:bg-[#444654]"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap"><div class="markdown prose w-full break-words dark:prose-invert light"><p>Thank you for letting me know. To read one line at a time from the serial port and set the speed to 115200, you can modify the <code>SerialWindow</code> class as follows:</p><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">SerialWindow</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, device</span>):
+        self.device = device
+        self.window = tk.Toplevel()
+        self.window.title(<span class="hljs-string">f"Serial Port: <span class="hljs-subst">{self.device}</span>"</span>)
+        self.text_area = tkst.ScrolledText(self.window)
+        self.text_area.pack(expand=<span class="hljs-literal">True</span>, fill=<span class="hljs-string">"both"</span>)
+        self.open_serial_port()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open_serial_port</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">with</span> serial.Serial(self.device, <span class="hljs-number">115200</span>, timeout=<span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> ser:
+            <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+                line = ser.readline().decode(<span class="hljs-string">'utf-8'</span>)
+                <span class="hljs-keyword">if</span> line:
+                    self.text_area.insert(tk.END, line)
+</code></div></div></pre><p>In this modified implementation, the <code>SerialWindow</code> class uses the <code>timeout</code> parameter to wait for up to 1 second for a line of data to be received from the serial port. Once a line is received, it is added to the text area using the <code>insert</code> method. The <code>Serial</code> object is created with a baud rate of 115200, as requested.</p></div></div></div><div class="flex justify-between"></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 dark:bg-gray-800"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap">the open_serial_port can not be part of the __init_ function as its an infinite loop. the window needs to be opend then filled in with data from readline</div></div></div></div></div><div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 bg-gray-50 dark:bg-[#444654]"><div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto"><div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]"><div class="flex flex-grow flex-col gap-3"><div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap"><div class="markdown prose w-full break-words dark:prose-invert light"><p>You are correct, thank you for pointing that out. The <code>open_serial_port</code> function should not be part of the <code>__init__</code> function, as it would cause the program to hang indefinitely. Instead, the <code>open_serial_port</code> function can be called after the window is created, and the text area can be updated with the data received from <code>readline</code>.</p><p>Here is the modified implementation that opens the window first and updates the text area with the data received from <code>readline</code>:</p><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>python</span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">import</span> serial.tools.list_ports
+<span class="hljs-keyword">import</span> tkinter <span class="hljs-keyword">as</span> tk
+<span class="hljs-keyword">import</span> tkinter.scrolledtext <span class="hljs-keyword">as</span> tkst
+<span class="hljs-keyword">import</span> threading
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SerialWindow</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, device</span>):
+        self.device = device
+        self.window = tk.Toplevel()
+        self.window.title(<span class="hljs-string">f"Serial Port: <span class="hljs-subst">{self.device}</span>"</span>)
+        self.text_area = tkst.ScrolledText(self.window)
+        self.text_area.pack(expand=<span class="hljs-literal">True</span>, fill=<span class="hljs-string">"both"</span>)
+        self.start_reading()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">start_reading</span>(<span class="hljs-params">self</span>):
+        self.serial_thread = threading.Thread(target=self.read_serial_port)
+        self.serial_thread.daemon = <span class="hljs-literal">True</span>
+        self.serial_thread.start()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">read_serial_port</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">with</span> serial.Serial(self.device, <span class="hljs-number">115200</span>, timeout=<span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> ser:
+            <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+                line = ser.readline().decode(<span class="hljs-string">'utf-8'</span>)
+                <span class="hljs-keyword">if</span> line:
+                    self.text_area.insert(tk.END, line)
+                    self.text_area.see(tk.END)
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SerialReaderGUI</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, master</span>):
+        self.master = master
+        self.master.title(<span class="hljs-string">"Serial Reader"</span>)
+        self.available_ports = self.list_available_ports()
+        self.selected_devices = []
+        self.create_widgets()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">list_available_ports</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> [port.device <span class="hljs-keyword">for</span> port <span class="hljs-keyword">in</span> serial.tools.list_ports.comports()]
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_widgets</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-comment"># Create a dropdown list of available serial ports</span>
+        tk.Label(self.master, text=<span class="hljs-string">"Select a serial port:"</span>).grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">0</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+        self.port_dropdown = tk.OptionMenu(self.master, tk.StringVar(), *self.available_ports)
+        self.port_dropdown.grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">1</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+
+        <span class="hljs-comment"># Create a button to add the selected serial port</span>
+        tk.Button(self.master, text=<span class="hljs-string">"Add Port"</span>, command=self.add_serial_port).grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">2</span>, padx=<span class="hljs-number">5</span>, pady=<span class="hljs-number">5</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">add_serial_port</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-comment"># Add a new serial window for the selected port</span>
+        device = self.port_dropdown.cget(<span class="hljs-string">"text"</span>)
+        <span class="hljs-keyword">if</span> device <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> self.selected_devices:
+            self.selected_devices.append(device)
+            SerialWindow(device)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    root = tk.Tk()
+    app = SerialReaderGUI(root)
+    root.mainloop()
+</code></div></div></pre><p>In this implementation, the <code>SerialWindow</code> class uses the <code>start_reading</code> function to start a new thread that reads from the serial port using the <code>read_serial_port</code> function. The <code>read_serial_port</code> function updates the text area with each line of data received from the serial port. The <code>SerialReaderGUI</code> class calls the <code>start_reading</code> function after the window is created, so the serial port is read in a separate thread without blocking the main GUI loop.</p></div></div></div><div class="flex justify-between"></div></div></div></div></body></html>
